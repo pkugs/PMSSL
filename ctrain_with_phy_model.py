@@ -380,9 +380,10 @@ def PMSSL():
 					# i_global,loss,pred=model.run_batch(train_batch)
 
 				# with spatial and signal information
-
+					# get the estimation of sound source signal using Unet
 					[ref_sig,s_inf,dir_sig] = creat_sig_for_pred(file_ii)
 					pred = model.get_pred(ref_sig)
+					# get the reverberation signals using room reverberation physical model.
 					train_sig = creat_forward_model_sig(pred,s_inf,SH_mat,file_ii)
 					# # pdb.set_trace()
 					i_global,loss,pred=model.run_batch(train_sig)
